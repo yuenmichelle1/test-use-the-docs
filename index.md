@@ -1,7 +1,6 @@
 ---
 title: Home
 layout: home
-has_children: true
 has_toc: true
 ---
 
@@ -11,7 +10,7 @@ Our stats service API allows our volunteers, project owners and project contribu
 
 Our Stats API uses HTTP GET requests with JSON arguments and JSON responses. You can view here ([https://github.com/zooniverse/eras/wiki/API-Callout-Examples](https://github.com/zooniverse/eras/wiki/API-Callout-Examples))  for full documentation and more callout examples.
 
-In this page, we provide common examples project owners or user group admins might use in order to query specific volunteer classification/comment counts.
+In this site, we provide common examples project owners or user group admins might use in order to query specific volunteer classification/comment counts.
 
 
 ### Differences Between eras.zooniverse.org vs Defunct stats.zooniverse.org
@@ -20,7 +19,7 @@ If you are familiar with our older stats service ([https://github.com/zooniverse
 
 
 
-* Differences in the Requests
+* **Differences in the Requests**
     * URL changes
         * No need to include `/counts` in URL for eras.zooniverse.org
         * Period is now a parameter (`?period`) vs a fixed part of URL
@@ -33,93 +32,11 @@ If you are familiar with our older stats service ([https://github.com/zooniverse
         * Month
         * Year
     * Some requests in eras.zooniverse.org will require an Authorization Header
-* Differences in Responses
+* **Differences in Responses**
     * Responses of [https://eras.zooniverse.org](https://eras.zooniverse.org) will only return the total counts unless you specify a `period` you want to bucket your data by.
     * Response keys are different
         * [https://eras.zooniverse.org](https://eras.zooniverse.org) Response Example:
         * [https://stats.zooniverse.org](https://stats.zooniverse.org) Response Example:
-
-
-
-
-## Querying Classification Counts (Unauthenticated)
-
-We allow querying classification counts without Authentication (i.e. No Authorization Header within your request) if you are querying by the following:
-
-
-
-* project_id/s
-    * can search by multiple project_ids when entering a `,` separated string of ids
-    * eg. `?project_id=1,2,3,4`
-* workflow_id/s
-    * can search by multiple workflow_ids when entering a `,` separated string of ids
-    * eg. `?workflow_id=1,2,3,4`
-* Start_date
-    * Date Format must be in `YYYY-MM-DD`
-* End_date
-    * Date Format must be in `YYYY-MM-DD`
-* Period
-    * If this is a parameter, the response will include a `data` key which shows the breakdown of classification counts bucketed by your entered period.
-    * Allowable buckets are either:
-        * `day`
-        * `week`
-        * `month`
-        * `year`
-
-**One caveat is that we do not allow you to query by BOTH project_id AND workflow_id (either one or the other). **
-
-
-### Example: Querying Classification Counts in total for Zooniverse
-
-If one was curious on how many total classifications we currently have on the Zooniverse, you could query the following:
-
-This will return the total count of classifications of the entire Zooniverse.
-
-Response will look like:
-
-
-### Example: Querying Classifications for a Specific Project
-
-If interested in querying classification count for a specific project, we can do the following:
-
-Response will look like:
-
-
-### Example: Querying Classifications for a Specific Project With Count Breakdown
-
-If interested in querying for classification count for a specific project (for eg. project with id `1234`) and also interested in the monthly counts that make up the total count of the response, we can query the following:
-
-Here, we utilize the `?period` parameter to bucket by month. Allowable `period`s are `day`, `week`, `month`, `year`.
-
-Response will look like:
-
-
-### Example: Querying Classification Counts for a Specific Project With Count Breakdown Within A Certain Date Range
-
-If interested in querying for classification count for a specific project (for eg. project with id `1234`) between the days of September 18, 2023 and September 22, 2023, and also interested in the daily counts that make up the total count of the response, we can query the following:
-
-**It is important to note that when entering a date range (a `start_date` or an `end_date` or both), dates entered MUST be in the format YYYY-MM-DD **
-
-Response:
-
-**The API uses UTC and are strings in the ISO 8601 “combined date and time representation” format (https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) :**
-
-**`<code>2015-05-15T15:50:38Z</code>`</strong>
-
-
-### Example: Querying Classification Counts of Multiple Projects With Count Breakdowns Within A Certain Date Range
-
-If interested in querying the classification counts of multiple projects (for eg. if one was the owner of projects with ID `1234` and `4321`) and were interested in total classification for both projects altogether between the days of May 05, 2015 and June 05, 2015, and also interested in the daily counts that make up the total count of the response, we can query the following:
-
-**Note that the two project ids are separated by a `,`. **
-
-**We expect the response to give the TOTAL classification count of both projects**
-
-
-
-* **i.e. classification counts of project with id 1234 + classification counts of project with id 4321**
-
-Response:
 
 
 ## Querying Comment Counts
