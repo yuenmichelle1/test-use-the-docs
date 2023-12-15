@@ -1,6 +1,8 @@
 ---
 title: Home
 layout: home
+has_children: true
+has_toc: true
 ---
 
 # How to Use Our Stats Service API
