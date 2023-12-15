@@ -2,6 +2,7 @@
 title: Home
 layout: home
 has_toc: true
+nav_order: 1
 ---
 
 # How to Use Our Stats Service API
@@ -37,49 +38,6 @@ If you are familiar with our older stats service ([https://github.com/zooniverse
     * Response keys are different
         * [https://eras.zooniverse.org](https://eras.zooniverse.org) Response Example:
         * [https://stats.zooniverse.org](https://stats.zooniverse.org) Response Example:
-
-
-## Querying Comment Counts
-
-We also allow querying comment counts without Authentication (i.e. No Authorization Header within your request).
-
-With comment counts you can also filter your count query by the following parameters:
-
-
-
-* project_id/s
-    * can search by multiple project_ids when entering a `,` separated string of ids
-    * eg. `?project_id=1,2,3,4`
-* user_id/s
-    * can search by multiple user_ids when entering a `,` separated string of ids
-    * eg. `?user_id=1,2,3,4`
-* Start_date
-    * Date Format must be in `YYYY-MM-DD`
-* End_date
-    * Date Format must be in `YYYY-MM-DD`
-* Period
-    * If this is a parameter, the response will include a `data` key which shows the breakdown of comment counts bucketed by your entered period.
-    * Allowable buckets are either:
-        * `day`
-        * `week`
-        * `month`
-        * `year`
-
-
-### Example: Querying Comment Counts
-
-If one was curious on how many total comments we currently have on the Zooniverse, you could query with the following:
-
-Response will look something like this:
-
-
-### Example: Querying Comment Counts By Project With Count 	Breakdown
-
-Similar to querying classification counts, our stats API allows querying comment counts by project. The following example shows how one would query for comment counts for a specific project (eg. project with id `1234`) broken down by month.
-
-Similar to `/classifications` endpoint, valid `period` buckets are either by `day`, `week`, `month`, `year`.
-
-Response:
 
 
 ## Querying Classification Counts By User (Authenticated)

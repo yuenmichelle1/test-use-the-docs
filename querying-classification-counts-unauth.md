@@ -4,6 +4,8 @@ layout: page
 nav_order: 2
 ---
 
+# Querying Classification Counts (Unauthenticated)
+
 We allow querying classification counts without Authentication (i.e. No Authorization Header within your request) if you are querying by the following:
 
 
